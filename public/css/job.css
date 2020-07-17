@@ -1,0 +1,17 @@
+@media only screen and (min-width: 425px) {
+   
+}
+
+@media only screen and (max-width: 768px) {
+    #title-job {
+      font-size: xx-large !important;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+}
+
+@media only screen and (min-width: 1440px) {
+
+}

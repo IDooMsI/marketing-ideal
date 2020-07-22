@@ -73,11 +73,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ route('contact') }}" style="text-decoration:none; color:white">Contacto</a>
                         </li>
-                        @if (Auth::user()->admin == 777)    
-                        <li class="nav-item dropdow">
-                             <a class="nav-link" style="color:white !important;" href="{{route('admin')}}">Panel</a>
-                        </li>
-                        @endif
+                        @auth
+                            @if (Auth::user()->admin == 777)    
+                            <li class="nav-item dropdow">
+                                <a class="nav-link" style="color:white !important;" href="{{route('admin')}}">Panel</a>
+                            </li>
+                            @endif
+                        @endauth
                     </ul>
                 </div>
             </div>

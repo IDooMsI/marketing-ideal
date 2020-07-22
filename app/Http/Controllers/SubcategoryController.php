@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Subcategory;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class SubcategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.subcategory.create');
+        $categories = Category::all();
+        $vac = compact('categories');
+        return view('admin.subcategory.create',$vac);
     }
 
     /**
@@ -39,9 +42,10 @@ class SubcategoryController extends Controller
     {
         Subcategory::create([
             'name'  => $request['name'],
+            'category_id'=>$request['category'],
         ]);
 
-        return redirect()->route('job.index')->with('notice', 'La subcategoria ' . $request['name'] . ' ha sido creado correctamente.');
+        return redirect()->route('subcategory.index')->with('notice', 'La subcategoria ' . $request['name'] . ' ha sido creado correctamente.');
     }
 
     /**
@@ -64,7 +68,8 @@ class SubcategoryController extends Controller
     public function edit($id)
     {
         $subcategory = Subcategory::find($id);
-        $vac = compact('subcategory');
+        $categories = Category::all();
+        $vac = compact('subcategory', 'categories');
         return view('admin.subcategory.edit', $vac);
     }
 
@@ -83,9 +88,14 @@ class SubcategoryController extends Controller
         if (isset($request['name'])) {
             $name = $request['name'];
         }
+        $category = $subcategory->category_id;
+        if(isset($request['category'])){
+            $category = $request['category'];
+        }
 
         $subcategory->update([
             'name' => $name,
+            'category_id'=>$category,
         ]);
 
         return redirect()->route('subcategory.index')->with('notice', 'La subcategoria ' . $subcategory->name . ' ha sido editada correctamente.');

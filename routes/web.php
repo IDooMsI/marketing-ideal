@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::group(['middleware'=>'auth'],function(){
+// Route::group(['middleware'=>'auth'],function(){
 
     Route::get('/admin', function () {
         return view('admin.index');
@@ -39,7 +39,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('/subcategory/{id}/delete', 'SubcategoryController@destroy')->name('subcategory.delete');
     Route::resource('subcategory','SubcategoryController');
-});
+// });
 
 
 Route::get('/servicios/{id}', 'HomeController@showServices')->name('show.services');

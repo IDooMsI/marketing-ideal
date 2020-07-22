@@ -35,7 +35,7 @@
                 <th scope="row">{{$data->id}}</th>
                 <th>{{$data->name}}</th>
                 <th>{{$data->price}}</th>
-                <th>{{$data->description}}</th>
+                <th>{{Str::limit($data->description,15)}}</th>
                 <th>{{$data->image}}</th>
                 <th class="text-center"><a href="">Ver</a></th>
                  <th>

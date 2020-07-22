@@ -24,6 +24,12 @@
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
+                            <div class="text-center">
+                                <h3>DESCRIPCION</h3>
+                                <p>
+                                    {{ $service->description }}
+                                </p>
+                            </div>
                             @break
                         @case('advanced')
                             <div class="col-12 text-center my-3">
@@ -48,7 +54,7 @@
                     @endswitch
                 </div>
                 <div class="col-12 text-center">
-                    <h3>$ {{ $service->price }}</h3>
+                    <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
                 </div>
             </div>
             @endforeach

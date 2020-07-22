@@ -4,6 +4,7 @@
     <div  id="video">
         <video autoplay muted width="100%" poster="{{ asset('storage/cortina-video.jpg') }}">
             <source src="{{ asset('storage/intro mp4.mp4') }}" type="video/mp4">
+            <source src="{{ asset('storage/intro mp4.webm') }}" type="video/webm">
         </video>
    </div>
     <div class="border-top border-warning mt-3"></div>

@@ -24,6 +24,7 @@
                 <th scope="col">Titulo</th>
                 <th scope="col">Link</th>
                 <th scope="col">Descripcion</th>
+                <th scope="col">Subcategoria</th>
                 <th scope="col">Imagen/Video</th>
                 <th scope="col">Opciones</th>
             </tr>
@@ -34,7 +35,8 @@
                 <th scope="row">{{$data->id}}</th>
                 <th>{{$data->title}}</th>
                 <th>{{Str::limit($data->link,10)}}</th>
-                <th>{{$data->description}}</th>
+                <th>{{Str::limit($data->description,15)}}</th>
+                <th>{{Str::limit($data->subcategory->name)}}</th>
                 <th>{{Str::limit($data->image,10)}}</th>
                  <th>
                     <a href="{{route('job.edit',['job'=>$data])}}">editar</a>

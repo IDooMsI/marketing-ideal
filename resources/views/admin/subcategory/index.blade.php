@@ -22,6 +22,7 @@
             <tr class="text-center">
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
+                <th scope="col">categoria</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
             <tr>
                 <th scope="row">{{$data->id}}</th>
                 <th>{{$data->name}}</th>
+                <th>{{$data->category->name}}</th>
                 <th>
                     <a href="{{route('subcategory.edit',['subcategory'=>$data])}}">editar</a>
                     ||

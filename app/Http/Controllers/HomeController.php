@@ -23,7 +23,11 @@ class HomeController extends Controller
     {
         $services = Service::with('specs')->where('subcategory_id',$id)->get();
         $vac = compact('services');
-        return view('service', $vac);
+        if ($id == 1) {
+            return view('service-marketing', $vac);
+        }else{
+            return view('service-web', $vac);
+        }
     }
 
     public function showJobs($id)

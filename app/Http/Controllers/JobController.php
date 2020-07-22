@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
@@ -28,7 +29,8 @@ class JobController extends Controller
     public function create()
     {
         $jobs = Job::all();
-        $vac = compact('jobs');
+        $subcategories = DB::table('subcategories')->where('category_id',2)->get();
+        $vac = compact('jobs','subcategories');
         return view('admin.job.create', $vac);
     }
 
@@ -48,6 +50,7 @@ class JobController extends Controller
             'link' => $request['link'],
             'description' => $request['description'],
             'image' => $image,
+            'subcategory_id'=>$request['subcategory']
         ]);
 
         return redirect()->route('job.index')->with('notice', 'El trabajo ' . $request['title'] . ' ha sido creado correctamente.');
@@ -73,7 +76,8 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::find($id);
-        $vac = compact('job');
+        $subcategories = DB::table('subcategories')->where('category_id', 2)->get();
+        $vac = compact('job','subcategories');
         return view('admin.job.edit', $vac);
     }
 
@@ -108,11 +112,17 @@ class JobController extends Controller
             $image = $this->createImage($request);
         }
 
+        $subcategory = $job->subcategory_id;
+        if (isset($request['subcategory'])) {
+            $subcategory = $request['subcategory'];
+        }
+
         $job->update([
             'title' => $title,
             'link' => $link,
             'description' => $description,
             'image' => $image,
+            'subcategory_id'=> $subcategory
         ]);
 
         return redirect()->route('job.index')->with('notice', 'El trabajo ' . $job->name . ' ha sido editado correctamente.');

@@ -35,8 +35,10 @@
                 <th scope="row">{{$data->id}}</th>
                 <th>{{$data->title}}</th>
                 <th>{{Str::limit($data->link,10)}}</th>
-                <th>{{Str::limit($data->description,15)}}</th>
-                <th>{{Str::limit($data->subcategory->name)}}</th>
+                <th>{{Str::limit($data->description,20)}}</th>
+                @if(isset($data->subcategory))
+                <th>{{$data->subcategory->name}}</th>
+                @endif
                 <th>{{Str::limit($data->image,10)}}</th>
                  <th>
                     <a href="{{route('job.edit',['job'=>$data])}}">editar</a>

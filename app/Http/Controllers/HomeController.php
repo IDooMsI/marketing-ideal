@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Job;
 use App\Service;
+use App\Sponsor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,8 +38,19 @@ class HomeController extends Controller
         return view('job', $vac);
     }
 
-    public function showSponsors()
+    public function showSponsors($page)
     {
-        return view('sponsor');
+        $sponsors = Sponsor::where('page',$page)
+        ->where('expirated',false)
+        ->inRandomOrder()->get();
+        $vac = compact('sponsors');
+        return view('sponsor.sponsors',$vac);
+    }
+    
+    public function showSponsor($id)
+    {
+        $sponsor = Sponsor::find($id);
+        $vac = compact('sponsor');
+        return view('sponsor.sponsor',$vac);
     }
 }

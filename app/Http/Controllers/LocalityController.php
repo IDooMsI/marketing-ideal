@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Locality;
 use Illuminate\Http\Request;
 
 class LocalityController extends Controller
@@ -23,7 +24,9 @@ class LocalityController extends Controller
      */
     public function create()
     {
-        //
+        $localities = Locality::all();
+        $vac = compact('localities');
+        return view('admin.locality.create', $vac);
     }
 
     /**
@@ -34,7 +37,11 @@ class LocalityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Locality::create([
+            'name'  => $request['name'],
+        ]);
+
+        return redirect()->route('sponsor.create');
     }
 
     /**

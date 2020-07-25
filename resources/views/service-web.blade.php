@@ -41,12 +41,12 @@
                             <div class="col-12 text-center">
                                 <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
                             </div>
-                            <ul class="border border-warning rounded text-success" style="background-color:black">
+                            <ul class="border border-warning rounded text-info" style="background-color:black">
                                 @foreach ($service->specs as $spec)
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
-                             <div class="text-center">
+                            <div class="text-center">
                                 <h3>DESCRIPCION</h3>
                                 <p>
                                     {{ $service->description }}
@@ -60,12 +60,12 @@
                             <div class="col-12 text-center">
                                 <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
                             </div>
-                             <ul class="border border-warning rounded" style="background-color:black; text-color: #ffb35e">
+                             <ul class="border border-warning rounded" style="background-color:black; color: #ffb35e">
                                 @foreach ($service->specs as $spec)
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
-                             <div class="text-center">
+                            <div class="text-center">
                                 <h3>DESCRIPCION</h3>
                                 <p>
                                     {{ $service->description }}
@@ -84,26 +84,26 @@
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
-                             <div class="text-center">
+                            <div class="text-center">
                                 <h3>DESCRIPCION</h3>
                                 <p>
                                     {{ $service->description }}
                                 </p>
                             </div>
                         @break
-                        @case('e-commerce')
+                        @case('e-Commerce')
                             <div class="col-12 text-center my-3">
-                                <button onclick="whatsapp('tienda online')" class="btn btn-block btn-outline-warning">Contratar</button>
+                                <button onclick="whatsapp('tienda online')" class="btn btn-block btn-outline-danger">Contratar</button>
                             </div>
                             <div class="col-12 text-center">
                                 <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
                             </div>
-                             <ul class="border border-warning rounded text-warning" style="background-color:black">
+                             <ul class="border border-warning rounded text-danger" style="background-color:black">
                                 @foreach ($service->specs as $spec)
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
-                             <div class="text-center">
+                            <div class="text-center">
                                 <h3>DESCRIPCION</h3>
                                 <p>
                                     {{ $service->description }}
@@ -112,6 +112,9 @@
                         @break
                     @endswitch
                 </div>
+                 <div class="border-top border-warning mt-3"></div>
+            <div class="border-top border-warning w-75 mx-auto my-2"></div>
+            <div class="border-top border-warning w-50 mx-auto mb-3"></div>
             </div>
             @endforeach
         </div>

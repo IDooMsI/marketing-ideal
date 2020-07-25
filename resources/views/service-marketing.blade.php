@@ -19,21 +19,21 @@
                             <div class="col-12 text-center my-3">
                                 <button onclick="whatsapp('starting')" class="btn btn-block btn-outline-secondary">Contratar</button>
                             </div>
+                            <div class="col-12 text-center">
+                                <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
+                            </div>
                              <ul class="border border-warning rounded text-white" style="background-color:black">
                                 @foreach ($service->specs as $spec)
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
                                 @endforeach
                             </ul>
-                            <div class="text-center">
-                                <h3>DESCRIPCION</h3>
-                                <p>
-                                    {{ $service->description }}
-                                </p>
-                            </div>
                             @break
                         @case('advanced')
                             <div class="col-12 text-center my-3">
                                 <button onclick="whatsapp('advanced')" class="btn btn-block btn-outline-success">Contratar</button>
+                            </div>
+                            <div class="col-12 text-center">
+                                <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
                             </div>
                             <ul class="border border-warning rounded text-success" style="background-color:black">
                                 @foreach ($service->specs as $spec)
@@ -45,6 +45,9 @@
                             <div class="col-12 text-center my-3">
                                 <button onclick="whatsapp('expert')" class="btn btn-block btn-outline-warning">Contratar</button>
                             </div>
+                            <div class="col-12 text-center">
+                                <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
+                            </div>
                              <ul class="border border-warning rounded text-warning" style="background-color:black">
                                 @foreach ($service->specs as $spec)
                                     <li class="my-3" style="list-style:circle ">{{ $spec->description }}</li>
@@ -53,8 +56,9 @@
                             @break
                     @endswitch
                 </div>
-                <div class="col-12 text-center">
-                    <h3>Valor <strong>$ {{ $service->price }}</strong></h3>
+                <div class="text-center">
+                    <h3>DESCRIPCION</h3>
+                    <p>{{ $service->description }}</p>
                 </div>
             </div>
             @endforeach

@@ -25,6 +25,7 @@
                 <th scope="col">Precio</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Imagen</th>
+                <th scope="col">Subcategoria</th>
                 <th scope="col">Especificaciones</th>
                 <th scope="col">Opciones</th>
             </tr>
@@ -35,8 +36,9 @@
                 <th scope="row">{{$data->id}}</th>
                 <th>{{$data->name}}</th>
                 <th>{{$data->price}}</th>
-                <th>{{Str::limit($data->description,15)}}</th>
-                <th>{{$data->image}}</th>
+                <th>{{Str::limit($data->description,40)}}</th>
+                <th>{{Str::limit($data->image,10)}}</th>
+                <th>{{$data->subcategory->name}}</th>
                 <th class="text-center"><a href="">Ver</a></th>
                  <th>
                     <a href="{{route('service.edit',['service'=>$data])}}">editar</a>

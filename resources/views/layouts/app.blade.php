@@ -67,18 +67,18 @@
                                 @endif
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ route('show.sponsors') }}" style="text-decoration:none; color:white">Espacio Publicitario</a>
+                         <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('show.sponsors',['page'=>1]) }}" style="text-decoration:none; color:white">Espacio Publicitario</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link" href="{{ route('contact') }}" style="text-decoration:none; color:white">Contacto</a>
                         </li>
                         @auth
-                            @if (Auth::user()->admin == 777)    
-                            <li class="nav-item dropdow">
-                                <a class="nav-link" style="color:white !important;" href="{{route('admin')}}">Panel</a>
-                            </li>
-                            @endif
+                        @if (Auth::user()->admin == 777)
+                        <li class="nav-item dropdow">
+                             <a class="nav-link" style="color:white !important;" href="{{route('admin')}}">Panel</a>
+                        </li>
+                        @endif
                         @endauth
                     </ul>
                 </div>
@@ -92,19 +92,19 @@
                 <div class="row justify-content-around">
                     <div class="col-12 col-md-6 col-lg-4  p-3 order-2 text-center align-self-center ">
                         <div class="row">
-                            <img src="{{ asset('storage/gmail.png') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="mailto:info@marketingideal.com" class="text-white">info@marketing-ideal.com</a></h5>
+                            <img src="{{ asset('storage/gmail.svg') }}" style="width: 8%" alt=""><a href="mailto:info@marketingideal.com" class="text-white">info@marketing-ideal.com</a></h5>
                         </div>
                         <div class="row">
-                            <img src="{{ asset('storage/facebook.png') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://m.facebook.com/marketingidealoficial/" class="text-white">Marketingidealoficial</a></h5>
+                            <img src="{{ asset('storage/facebook.svg') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://m.facebook.com/marketingidealoficial/" class="text-white">Marketingidealoficial</a></h5>
                         </div>
                         <div class="row">
-                            <img src="{{ asset('storage/instagram.png') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://www.instagram.com/marketingidealok/" class="text-white">@marketingidealok</a></h5>
+                            <img src="{{ asset('storage/instagram.svg') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://www.instagram.com/marketingidealok/" class="text-white">@marketingidealok</a></h5>
                         </div>
                         <div class="row">
-                            <img src="{{ asset('storage/world.png') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://marketing-ideal.com/" target="_blank" class="text-white">www.marketing-ideal.com</a></h5>
+                            <img src="{{ asset('storage/world.svg') }}" style="width: 8%" alt=""><h5 class="ml-1 my-auto"><a href="https://marketing-ideal.com/" target="_blank" class="text-white">www.marketing-ideal.com</a></h5>
                         </div>
                         <div class="row">
-                            <img src="{{ asset('storage/whatsapp.png') }}" style="width: 8%" class="my-auto" alt=""><h5 class="ml-1 my-auto"><a target="_blank" class="text-white">11 3665-9229</a></h5>
+                            <img src="{{ asset('storage/whatsapp.svg') }}" style="width: 8%" class="my-auto" alt=""><h5 class="ml-1 my-auto"><a target="_blank" class="text-white">11 3665-9229</a></h5>
                         </div>
                     </div>
                     <div class="col-6 col-md-3 col-lg-4 d-lg-block d-xl-block p-3 order-1 text-center align-self-center">

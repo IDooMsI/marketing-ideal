@@ -34,8 +34,8 @@
                 <small id="passwordHelpBlock" class="form-text text-muted"><b>Categoria a la que pertenece</b></small>
             </div>
             <div class="form-group col-12 col-md-6 col-lg-4">
-                <h4><label for="">Imagen</label></h4>
-                <input name="image" class="form-control-file" type="file">
+                <h4><label for="">Imagen/Video</label></h4>
+                <input name="image" class="form-control-file" type="file" required>
                 @error('image')
                 <div id="error" class="alert alert-danger mx-auto col-11 col-sm-4 col-lg-12"><span>{{ $message }}</span></div>
                 @enderror

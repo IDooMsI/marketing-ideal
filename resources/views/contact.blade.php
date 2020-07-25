@@ -1,23 +1,20 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <form action="">
-        @csrf
-        <div class="form-group col-4 tex-center mx-auto">
-            <label for="">Nombre</label>
-            <input type="text" class="form-control">
+    <div class="form-group mx-auto col-6 col-md-6 col-lg-4">
+        <label for="">Nombre</label>
+        <input id="name" type="text" class="form-control" required>
 
-            <label for="">Apellido</label>
-            <input type="text" class="form-control">
-            
-            <label for="">Email</label>
-            <input type="text" class="form-control" placeholder="example@email.com">
-            
-            <label for="">Consulta</label>
-            <textarea class="form-control" name="" id="" cols="5" rows="5"></textarea>
-            
-            <button type="button" class="btn btn-primary">Enviar</button>
-        </div>
-    </form>
+        <label for="">Apellido</label>
+        <input id="lastname" type="text" class="form-control" required>
+        
+        <label for="">Email</label>
+        <input id="email" type="email" class="form-control" placeholder="example@email.com" required>
+        
+        <label for="">Consulta</label>
+        <textarea id="message" class="form-control" name="" cols="5" rows="5" required></textarea>
+        
+        <button onclick="contacto()" class="btn btn-block btn-outline-secondary mt-2">Enviar</button>
+    </div>
 </div>
 @endsection

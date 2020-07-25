@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Job;
-use Illuminate\Http\Request;
+use App\Subcategories;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class JobController extends Controller
@@ -76,7 +77,7 @@ class JobController extends Controller
     public function edit($id)
     {
         $job = Job::find($id);
-        $subcategories = DB::table('subcategories')->where('category_id', 2)->get();
+        $subcategories = DB::table('subcategories')->where('category_id',2)->get();
         $vac = compact('job','subcategories');
         return view('admin.job.edit', $vac);
     }
@@ -111,7 +112,7 @@ class JobController extends Controller
         if (isset($request['image'])) {
             $image = $this->createImage($request);
         }
-
+        
         $subcategory = $job->subcategory_id;
         if (isset($request['subcategory'])) {
             $subcategory = $request['subcategory'];
@@ -169,9 +170,15 @@ class JobController extends Controller
 
     public function createImage(Request $request)
     {
+        //$file = $request['image'];
+        //$name = $request['title'] . "." . $file->extension();
+        //$path = $file->storeAs('jobs', $name, 'public');
+     
         $file = $request['image'];
-        $name = $request['title'] . "." . $file->extension();
-        $path = $file->storeAs('jobs', $name, 'public');
+        $name = $request['title'].".".$file->extension();
+        $path = 'jobs/'.$name;
+        move_uploaded_file($file, "../public_html/storage/$path");
+     
         return $path;
     }
 }

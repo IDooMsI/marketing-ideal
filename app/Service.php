@@ -12,4 +12,9 @@ class Service extends Model
     {
         return $this->belongsToMany('App\Spec', 'service_specs', 'service_id','specs_id');
     }
+    
+   public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
 }

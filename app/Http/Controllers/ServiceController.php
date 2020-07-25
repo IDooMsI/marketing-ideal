@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use App\Spec;
+use App\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -30,7 +31,8 @@ class ServiceController extends Controller
     public function create()
     {
         $specs = Spec::all();
-        $vac=compact('specs');
+        $subcategories = DB::table('subcategories')->where('category_id',1)->get();
+        $vac = compact('specs','subcategories');
         return view('admin.service.create',$vac);
     }
 
@@ -46,10 +48,11 @@ class ServiceController extends Controller
         $image = $this->createImage($request);
 
         $service = Service::create([
-            'name'  => $request['name'],
-            'price'=> $request['price'],
-            'description'=>$request['description'],
-            'image'=>$image,
+            'name'          =>$request['name'],
+            'price'         =>$request['price'],
+            'description'   =>$request['description'],
+            'image'         =>$image,
+            'subcategory_id'   =>$request['subcategory']
         ]);
 
         if($request['specs']){
@@ -84,7 +87,8 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $specs = Spec::all();
-        $vac = compact('service','specs');
+        $subcategories = DB::table('subcategories')->where('category_id',1)->get();
+        $vac = compact('service','specs','subcategories');
         return view('admin.service.edit', $vac);
     }
 
@@ -118,12 +122,18 @@ class ServiceController extends Controller
         if (isset($request['image'])) {
             $image = $this->createImage($request);
         }
+        
+        $subcategory = $service->subcategory;
+        if(isset($request['subcategory'])){
+            $subcategory = $request['subcategory'];
+        }
 
         $service->update([
-            'name' => $name,
-            'price' => $price,
-            'description' => $description,
-            'image' => $image,
+            'name'          =>$name,
+            'price'         =>$price,
+            'description'   =>$description,
+            'image'         =>$image,
+            'subcategory_id'   =>$subcategory,
         ]);
         
         if ($request['specs']) {
@@ -203,9 +213,15 @@ class ServiceController extends Controller
 
     public function createImage(Request $request)
     {
+        //$file = $request['image'];
+        //$name = $request['name'] . "." . $file->extension();
+        //$path = $file->storeAs('services', $name, 'public');
+        
         $file = $request['image'];
-        $name = $request['name'] . "." . $file->extension();
-        $path = $file->storeAs('services', $name, 'public');
+        $name = $request->input('name').".".$file->extension();
+        $path = 'services/'.$name;
+        move_uploaded_file($file, "../public_html/storage/$path");
+        
         return $path;
     }
 }
